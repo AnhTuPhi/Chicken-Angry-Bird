@@ -9,13 +9,13 @@ const audio = document.getElementById('audio');
 
 function preload(){
     bird_1_img = loadImage('https://image.flaticon.com/icons/svg/528/528076.svg');
-    bird_2_img = loadImage('https://image.flaticon.com/icons/svg/1582/1582161.svg');
+    //bird_2_img = loadImage('https://image.flaticon.com/icons/svg/1582/1582161.svg');
 }
 
 function setup(){
     createCanvas(500, 600);
     bird1= new Bird(bird_1_img);
-    bird2= new Bird(bird_2_img);
+    //bird2= new Bird(bird_2_img);
     pipes.push(new Pipe());
     imageMode(CENTER);
 }
@@ -31,11 +31,11 @@ function draw(){
             score = 0;
             bird1.y = random(height);
         }
-        if(bird2.hits(pipe)){
+        /*if(bird2.hits(pipe)){
             pipes.splice(0, pipes.length - 1 );
             score = 0;
             bird2.y = random(height);
-        }
+        }*/
         if(pipe.isOffscreen()){
             pipes.splice(i, 1);
 
@@ -43,8 +43,8 @@ function draw(){
     }
     bird1.update();
     bird1.draw();
-    bird2.update();
-    bird2.draw();
+    /*bird2.update();
+    bird2.draw();*/
     if(frameCount % 80 === 0){
         pipes.push(new Pipe());
     }
@@ -58,9 +58,9 @@ function keyPressed(){
     if(key ==='j'){
         bird1.fly();
     }
-    else if(key === 'k'){
+    /*else if(key === 'k'){
         bird2.fly();
-    }
+    }*/
 }
 class Bird {
     constructor(bird_img){
@@ -90,7 +90,7 @@ class Bird {
     }
     fly(){
         this.yVelocity += fly;
-
+        audio.play();
     }
     hits(pipe){
         if(this.y - this.size / 2 < pipe.top || this.y + this.size / 2 > pipe.bottom){
@@ -124,7 +124,7 @@ class Pipe{
             if (!this.incrementScore) {
                 score++;
                 this.incrementScore = true;
-                audio.play();
+                
             }
         }
     }
