@@ -9,7 +9,7 @@ const audio = document.getElementById('audio');
 
 function preload(){
     bird_1_img = loadImage('https://image.flaticon.com/icons/svg/528/528076.svg');
-    //bird_2_img = loadImage('https://image.flaticon.com/icons/svg/1582/1582161.svg');
+    /*bird_2_img = loadImage('https://image.flaticon.com/icons/svg/1582/1582161.svg');*/
 }
 
 function setup(){
